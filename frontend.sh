@@ -1,3 +1,7 @@
+script_location= ${pwd}
+
+set -e
+
 echo -e "\e[35m install nginx \e[0m"
 yum install nginx -y
 
