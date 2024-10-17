@@ -26,6 +26,9 @@ unzip /tmp/frontend.zip
 status_check()
 
 print_head "copying roboshop configuration file"
+cd roboshop-shell
+status_check()
+
 cp ${script_location}/files/nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf
 status_check()
 
