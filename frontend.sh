@@ -1,12 +1,12 @@
-script_location= ${pwd}
-
+script_location= $pwd
 set -e
+log=/tmp/roboshop.log
 
 echo -e "\e[35m install nginx \e[0m"
-yum install nginx -y
+yum install nginx -y &>> $log
 
 echo -e "\e[35m enable nginx \e[0m"
-systemctl enable nginx
+systemctl enable nginx &>> $log
 
 echo -e "\e[35m start nginx \e[0m"
 systemctl start nginx
