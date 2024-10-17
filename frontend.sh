@@ -25,7 +25,7 @@ echo -e "\e[35m unzip frontend file \e[0m"
 unzip /tmp/frontend.zip
 
 echo -e "\e[35m copying roboshop conf file \e[0m"
-cp ${pwd}/files/roboshop.conf /etc/nginx/default.d/roboshop.conf
+cp ${pwd}/files/nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 echo -e "\e[35m restart nginx \e[0m"
 systemctl restart nginx
