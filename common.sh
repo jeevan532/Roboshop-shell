@@ -8,6 +8,6 @@ status_check() {
     echo "failure, refer log at -${log}"
   fi
 }
-header() {
+print_head() {
   echo -e "\e[1m $1 \e[0m"
 }
