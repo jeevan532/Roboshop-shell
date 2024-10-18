@@ -24,7 +24,7 @@ app_prereq() {
   mkdir -p /app
 
   print_head "download app content"
-  curl -L -o curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
+  curl -L -o curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
   status_check
 
   print_head "removing old app content"
