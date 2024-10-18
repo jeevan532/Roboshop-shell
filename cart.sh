@@ -1,7 +1,6 @@
-source common.sh
+source common1.sh
 
 component=cart
-schema_load=true
-shcema_type=mongodb
+schema_load=false
 
-nodejs
+NODEJS

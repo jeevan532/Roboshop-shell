@@ -1,7 +1,7 @@
-source common.sh
+source common1.sh
 
 component=shipping
 schema_load=true
-shcema_type=mongodb
+schema_type=mysql
 
-maven
+MAVEN
