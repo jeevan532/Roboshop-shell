@@ -3,7 +3,7 @@ script_location=$(pwd)
 
 status_check() {
   if [ $? -eq 0 ]; then
-    echo -e "\e[31m success\e[0m"
+    echo -e "\e[1;31m success \e[0m"
   else
     echo "failure, refer log at -${log}"
   fi
@@ -54,8 +54,8 @@ systemd_setup() {
 }
 
 load_schema() {
-  if [ shema_load==true ]; then
-    if [ $schema_type==mongodb ]; then
+  if [ ${shema_load} == true ]; then
+    if [ ${schema_type} == mongodb ]; then
        print_head "Configuring Mongo Repo "
        cp ${script_location}/files/mongodb.repo /etc/yum.repos.d/mongodb.repo
        status_check
@@ -68,7 +68,7 @@ load_schema() {
        mongo --host mongodb-dev.devopsb70.online </app/schema/${component}.js
        status_check
     fi
-    if [ $shcema_type==mysql ]; then
+    if [ $shcema_type == mysql ]; then
        print_head "Install MySQL Client"
        yum install mysql -y &>>${log}
        status_check
@@ -88,7 +88,7 @@ nodejs() {
   status_check
 
   print_head "installing nodejs"
-  yum install nodejs -yum
+  yum install nodejs -y
   status_check
 
   print_head "downloading dependencies"
@@ -103,6 +103,8 @@ nodejs() {
 maven() {
   app_prereq
 
+  systemd_setup
+
   print_head "download maven"
   yum install maven -y
   status_check
@@ -111,9 +113,12 @@ maven() {
   mvn clean package
   status_check
 
+  print_head "move jar file"
+  mv target/${component}-1.0.jar ${component}.jar
+  status_check
+
   load_schema
 
-  systemd_setup
 }
 
 python() {
