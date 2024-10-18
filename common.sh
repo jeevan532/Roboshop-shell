@@ -16,7 +16,7 @@ print_head() {
 app_prereq() {
   print_head "add app user"
   id roboshop &>>${log}
-  if ( $? -ne 0 ); then
+  if [ $? -ne 0 ]; then
     useradd roboshop &>>${log}
   fi
   status_check

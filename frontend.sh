@@ -20,7 +20,6 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 
 print_head "copying roboshop configuration file"
-cd roboshop-shell
 cp ${script_location}/files/nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 print_head "restart nginx"
